@@ -1,5 +1,3 @@
-using System;
-
 namespace AuthServer.Core.Models;
 
 public class Product
