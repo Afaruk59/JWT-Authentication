@@ -15,13 +15,20 @@ public class UserService : IUserService
     }
     public async Task<Response<UserAppDto>> CreateUserAsync(CreateUserDto createUserDto)
     {
-        var user = new UserApp { UserName = createUserDto.UserName, Email = createUserDto.Email };
+        var user = new UserApp { UserName = createUserDto.UserName, Email = createUserDto.Email, City = null };
         var result = await _userManager.CreateAsync(user, createUserDto.Password);
         if (!result.Succeeded)
         {
             return Response<UserAppDto>.Fail(string.Join(",", result.Errors.Select(x => x.Description)), 400, true);
         }
-        return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
+        var userDto = new UserAppDto
+        {
+            Id = user.Id,
+            UserName = user.UserName,
+            Email = user.Email,
+            City = user.City
+        };
+        return Response<UserAppDto>.Success(userDto, 200);
     }
     public async Task<Response<UserAppDto>> GetUserByNameAsync(string UserName)
     {
@@ -30,6 +37,13 @@ public class UserService : IUserService
         {
             return Response<UserAppDto>.Fail("User not found.", 404, true);
         }
-        return Response<UserAppDto>.Success(ObjectMapper.Mapper.Map<UserAppDto>(user), 200);
+        var userDto = new UserAppDto
+        {
+            Id = user.Id,
+            UserName = user.UserName,
+            Email = user.Email,
+            City = user.City
+        };
+        return Response<UserAppDto>.Success(userDto, 200);
     }
 }

@@ -20,7 +20,7 @@ public class UserController : CustomBaseControler
     {
         return ActionResultInstance(await _userService.CreateUserAsync(createUserDto));
     }
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [HttpGet]
     public async Task<IActionResult> GetUser()
     {

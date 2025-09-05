@@ -13,12 +13,13 @@ public class ErrorDto
     }
     public ErrorDto(string error, bool isShow)
     {
+        Errors = new List<string>();
         Errors.Add(error);
-        isShow = true;
+        IsShow = isShow;
     }
     public ErrorDto(List<string> errors, bool isShow)
     {
-        Errors = Errors;
-        isShow = isShow;
+        Errors = errors;
+        IsShow = isShow;
     }
 }
