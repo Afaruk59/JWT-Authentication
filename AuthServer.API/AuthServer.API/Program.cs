@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.JsonWebTokens;
 using SharedLibrary.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using SharedLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

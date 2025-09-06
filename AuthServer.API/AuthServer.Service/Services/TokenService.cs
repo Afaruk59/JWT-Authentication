@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SharedLibrary.Config;
+using SharedLibrary.Services;
 
 namespace AuthServer.Service.Services;
 
